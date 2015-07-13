@@ -134,18 +134,20 @@ struct ipu_di_signal_cfg {
 
 static const struct fb_videomode mx3fb_modedb[] = {
 	{
-		/* 240x320 @ 60 Hz */
+		/* 1920x1080 @ 30 Hz */
+                .bus            = -1,
+                .addr           = 0,
 		.name		= "Sharp-FHD",
-		.refresh	= 60,
-		.xres		= 240,
-		.yres		= 320,
-		.pixclock	= 185925,
-		.left_margin	= 9,
-		.right_margin	= 16,
-		.upper_margin	= 7,
-		.lower_margin	= 9,
-		.hsync_len	= 1,
-		.vsync_len	= 1,
+		.refresh	= 30,
+		.xres		= 1920,
+		.yres		= 1080,
+		.pixclock	= 14365, /* 1e12/[(100+1920+40+10)*(27+1080+3+11)*30] note:dont know why THz at start?? */
+		.left_margin	= 100,
+		.right_margin	= 40,
+		.upper_margin	= 27,
+		.lower_margin	= 3,
+		.hsync_len	= 10,
+		.vsync_len	= 11,
 		.sync		= FB_SYNC_HOR_HIGH_ACT | FB_SYNC_SHARP_MODE |
 				  FB_SYNC_CLK_INVERT | FB_SYNC_DATA_INVERT |
 				  FB_SYNC_CLK_IDLE_EN,
