@@ -118,7 +118,31 @@
 #define IMXFB_LSCR1_DEFAULT 0x00120300
 
 /* Used fb-mode. Can be set on kernel command line, therefore file-static. */
-static const char *fb_mode;
+/*static const char *fb_mode;*/
+static const struct imx_fb_videomode fb_modedb[] = {
+	{
+		/* 1920x1080 @ 30 Hz */
+                
+                
+		.name		= "Sharp-FHD",
+		.refresh	= 30,
+		.xres		= 1920,
+		.yres		= 1080,
+		.pixclock	= 14365, /* 1e12/[(100+1920+40+10)*(27+1080+3+11)*30] note:dont know why THz at start?? */
+		.left_margin	= 100,
+		.right_margin	= 40,
+		.upper_margin	= 27,
+		.lower_margin	= 3,
+		.hsync_len	= 10,
+		.vsync_len	= 11,
+		.sync		= FB_SYNC_HOR_HIGH_ACT | FB_SYNC_SHARP_MODE |
+				  FB_SYNC_CLK_INVERT | FB_SYNC_DATA_INVERT |
+				  FB_SYNC_CLK_IDLE_EN,
+		.vmode		= FB_VMODE_NONINTERLACED,
+		.flag		= 0,
+	},
+};
+
 
 /*
  * These are the bitfields for each
