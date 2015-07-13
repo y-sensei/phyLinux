@@ -400,6 +400,18 @@ static const char * const imx6q_dt_compat[] __initconst = {
 	NULL,
 };
 
+static struct ipuv3_fb_platform_data imx6q_fb_data[] = {
+    // other displays data
+     {
+    .disp_dev = "ldb",
+    .interface_pix_fmt = IPU_PIX_FMT_RGB666,
+    .mode_str = "Sharp-FHD",
+    .default_bpp = 16,
+    .int_clk = false,
+    .late_init = false,
+    },
+};
+
 DT_MACHINE_START(IMX6Q, "Freescale i.MX6 Quad/DualLite (Device Tree)")
 	.smp		= smp_ops(imx_smp_ops),
 	.map_io		= imx6q_map_io,
