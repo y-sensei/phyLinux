@@ -135,7 +135,7 @@ struct ipu_di_signal_cfg {
 static const struct fb_videomode mx3fb_modedb[] = {
 	{
 		/* 240x320 @ 60 Hz */
-		.name		= "Sharp-QVGA",
+		.name		= "Sharp-FHD",
 		.refresh	= 60,
 		.xres		= 240,
 		.yres		= 320,
